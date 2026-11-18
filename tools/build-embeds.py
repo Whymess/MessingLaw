@@ -102,6 +102,8 @@ def rewrite(html, asset_base, used):
         return u
 
     html = re.sub(r'\b(src|href)="([^"]+)"', lambda m: f'{m.group(1)}="{fix_url(m.group(2))}"', html)
+    html = re.sub(r'\bsrcset="([^"]+)"', lambda m: 'srcset="' + ", ".join(
+        " ".join([fix_url(c.split()[0])] + c.split()[1:]) for c in m.group(1).split(",")) + '"', html)
     html = re.sub(r"url\('([^']+)'\)", lambda m: f"url('{fix_url(m.group(1))}')", html)
     return html
 
@@ -127,10 +129,13 @@ def main():
 
     # Head: fonts + scoped CSS + JS (copied from the static site's <head>)
     sample = (ROOT / "index.html").read_text(encoding="utf-8")
-    font_tags = "\n".join(l for l in sample.splitlines()
-                          if "use.typekit.net/ik/" in l or "fonts.googleapis.com/css2" in l)
+    font_tags = "\n".join(l for l in sample.splitlines() if "use.typekit.net/ik/" in l)
+    # The static site self-hosts these (assets/fonts); builders can't serve them, so use Google Fonts.
+    font_tags += ('\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Trykker'
+                  '&amp;family=Barlow+Condensed:wght@500;700&amp;display=swap">')
     css = (ROOT / "assets/css/styles.css").read_text(encoding="utf-8")
     css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"@font-face\s*\{[^}]*\}", "", css)
     css = re.sub(r'url\("\.\./\.\./images/([^"]+)"\)',
                  lambda m: (used.add(m.group(1)) or f'url("{base}{m.group(1)}")'), css)
     reset = (f"{P} {{ display: block; text-align: left; }}\n"

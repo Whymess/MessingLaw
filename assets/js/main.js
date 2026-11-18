@@ -101,6 +101,11 @@ function init() {
     if (!btn) return;
     var hasBio = tpl && tpl.content.textContent.trim().length > 0;
     if (!hasBio || !dialog || typeof dialog.showModal !== "function") { btn.hidden = true; return; }
+    var photo = card.querySelector(".person-photo");
+    if (photo) {
+      photo.classList.add("is-clickable");
+      photo.addEventListener("click", function () { btn.click(); });
+    }
     btn.addEventListener("click", function () {
       var img = card.querySelector(".person-photo img");
       dialog.querySelector(".bio-dialog-photo").innerHTML = img ? '<img src="' + img.getAttribute("src") + '" alt="">' : "";
