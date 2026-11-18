@@ -126,6 +126,39 @@ function init() {
     dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
   }
 
+  /* ---- Scheduler: pick an attorney, show their Calendly ----
+     Buttons carry data-calendly="https://calendly.com/<name>". The page loads
+     Calendly's widget.js; until it arrives (or if it is blocked) the plain
+     links in .calendly-fallback stay visible. schedule.html#alessandra preselects. */
+  var scheduler = document.querySelector("[data-scheduler]");
+  if (scheduler) {
+    var options = Array.prototype.slice.call(scheduler.querySelectorAll("[data-calendly]"));
+    var embed = scheduler.querySelector(".calendly-embed");
+    var current = null;
+    var calendlyParams = "hide_gdpr_banner=1&background_color=ffffff&primary_color=069372";
+    var show = function (btn, updateHash) {
+      options.forEach(function (o) { o.setAttribute("aria-pressed", String(o === btn)); });
+      if (updateHash && history.replaceState) history.replaceState(null, "", "#" + btn.id);
+      var url = btn.getAttribute("data-calendly");
+      if (url === current) return;
+      var tries = 0;
+      (function render() {
+        if (window.Calendly && typeof window.Calendly.initInlineWidget === "function") {
+          current = url;
+          embed.innerHTML = "";
+          window.Calendly.initInlineWidget({ url: url + (url.indexOf("?") === -1 ? "?" : "&") + calendlyParams, parentElement: embed });
+        } else if (tries++ < 100) {
+          setTimeout(render, 100); // widget.js loads async; wait up to ~10s, else keep the fallback links
+        }
+      })();
+    };
+    options.forEach(function (btn) {
+      btn.addEventListener("click", function () { show(btn, true); });
+    });
+    var fromHash = options.filter(function (o) { return "#" + o.id === location.hash; })[0];
+    show(fromHash || options[0], false);
+  }
+
   /* ---- Forms ----
      Set data-endpoint="https://..." on a form (e.g. a Formspree, Netlify,
      or your own endpoint) to enable submission. Until then the form shows a

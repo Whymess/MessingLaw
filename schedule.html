@@ -61,12 +61,39 @@
 <section class="section">
   <div class="wrap" style="max-width:calc(1040px + 2 * var(--gutter))">
     <h1 class="center reveal">Schedule a Consultation</h1>
-    <div class="calendly-wrap" style="margin-top:clamp(24px,3vw,40px)">
-      <div class="calendly-inline-widget" data-url="https://calendly.com/alessandramessing?hide_gdpr_banner=1&amp;background_color=ffffff&amp;primary_color=069372">
-        <noscript><div class="calendly-fallback"><a href="https://calendly.com/alessandramessing">Open the scheduling page</a></div></noscript>
+    <p class="center schedule-intro reveal">Choose who you would like to meet with, then pick a time that works for you.</p>
+
+    <!-- Each button's data-calendly is that attorney's Calendly page. To add another attorney,
+         copy a button, change the id (used as the link anchor, e.g. schedule.html#aaron), photo, name, focus and URL. -->
+    <div class="scheduler" data-scheduler>
+      <div class="attorney-picker" role="group" aria-label="Choose an attorney">
+        <button class="attorney-option" type="button" id="aaron" aria-pressed="true" aria-controls="calendly-embed"
+                data-calendly="https://calendly.com/messinglaw">
+          <img src="images/aaron-messing.webp" alt="" width="600" height="750">
+          <span class="attorney-option-text">
+            <strong>Aaron I. Messing</strong>
+            <small>Corporate, transactions, M&amp;A, venture capital &amp; outside general counsel</small>
+          </span>
+        </button>
+        <button class="attorney-option" type="button" id="alessandra" aria-pressed="false" aria-controls="calendly-embed"
+                data-calendly="https://calendly.com/alessandramessing">
+          <img src="images/alessandra-carcaterra-messing.webp" alt="" width="600" height="750">
+          <span class="attorney-option-text">
+            <strong>Alessandra Carcaterra Messing</strong>
+            <small>Litigation, intellectual property, patent &amp; IP disputes</small>
+          </span>
+        </button>
+      </div>
+      <p class="schedule-hint">Not sure who to choose? Book with either attorney. We will make sure you reach the right person.</p>
+      <div class="calendly-wrap">
+        <div class="calendly-embed" id="calendly-embed" aria-live="polite">
+          <div class="calendly-fallback">
+            <p>Book online with <a href="https://calendly.com/messinglaw" target="_blank" rel="noopener">Aaron I. Messing</a> or <a href="https://calendly.com/alessandramessing" target="_blank" rel="noopener">Alessandra Carcaterra Messing</a>.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="schedule-alt"><a href="tel:646-450-9460">646-450-9460</a> &middot; <a href="mailto:aaron@messing.law">aaron@messing.law</a></p>
+    <p class="schedule-alt">Prefer to call or email? <a href="tel:+16464509460">646-450-9460</a> &middot; <a href="mailto:aaron@messing.law">aaron@messing.law</a> &middot; <a href="mailto:alessandra@messing.law">alessandra@messing.law</a></p>
   </div>
 </section>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
