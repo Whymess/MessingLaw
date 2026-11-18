@@ -17,9 +17,7 @@ banner-schedule.webp
 banner-team-800.webp
 banner-team.webp
 chambers-2026.webp
-chambers-ip.webp
 chambers-ranked-2025.webp
-chambers-transactional.webp
 hero-home.webp
 lloyd-kim.webp
 logo-icon-white.webp

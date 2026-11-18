@@ -129,7 +129,11 @@ def main():
 
     # Head: fonts + scoped CSS + JS (copied from the static site's <head>)
     sample = (ROOT / "index.html").read_text(encoding="utf-8")
-    font_tags = "\n".join(l for l in sample.splitlines() if "use.typekit.net/ik/" in l)
+    # Whole <script>/<link> tags that load the Adobe Fonts kit (tags may span several lines).
+    font_tags = "\n".join(
+        m.group(0)
+        for m in re.finditer(r"<(script|link)\b[^>]*use\.typekit\.net/ik/[^>]*>(?:</script>)?", sample)
+    )
     # The static site self-hosts these (assets/fonts); builders can't serve them, so use Google Fonts.
     font_tags += ('\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Trykker'
                   '&amp;family=Barlow+Condensed:wght@500;700&amp;display=swap">')

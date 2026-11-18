@@ -1,43 +1,77 @@
 <div class="ml-site">
-<div class="page-banner"><img src="/s/banner-schedule.webp" srcset="/s/banner-schedule-800.webp 800w, /s/banner-schedule.webp 1500w" sizes="(min-width: 1440px) 1440px, 100vw" fetchpriority="high" alt="An escalator leading into a forest road" width="1500" height="750"></div>
+<div class="page-banner">
+      <img
+        src="/s/banner-schedule.webp"
+        srcset="/s/banner-schedule-800.webp 800w, /s/banner-schedule.webp 1500w"
+        sizes="(min-width: 1440px) 1440px, 100vw"
+        fetchpriority="high"
+        alt="An escalator leading into a forest road"
+        width="1500"
+        height="750">
+    </div>
 
-<section class="section">
-  <div class="wrap" style="max-width:calc(1040px + 2 * var(--gutter))">
-    <h1 class="center reveal">Schedule a Consultation</h1>
-    <p class="center schedule-intro reveal">Choose who you would like to meet with, then pick a time that works for you.</p>
-
-    <!-- Each button's data-calendly is that attorney's Calendly page. To add another attorney,
+    <section class="section">
+      <div class="wrap" style="max-width:calc(1040px + 2 * var(--gutter))">
+        <h1 class="center reveal">Schedule a Consultation</h1>
+        <p class="center schedule-intro reveal">
+          Choose who you would like to meet with, then pick a time that works for you.
+        </p>
+        <!-- Each button's data-calendly is that attorney's Calendly page. To add another attorney,
          copy a button, change the id (used as the link anchor, e.g. schedule.html#aaron), photo, name, focus and URL. -->
-    <div class="scheduler" data-scheduler>
-      <div class="attorney-picker" role="group" aria-label="Choose an attorney">
-        <button class="attorney-option" type="button" id="aaron" aria-pressed="true" aria-controls="calendly-embed"
-                data-calendly="https://calendly.com/messinglaw">
-          <img src="/s/aaron-messing.webp" alt="" width="600" height="750">
-          <span class="attorney-option-text">
-            <strong>Aaron I. Messing</strong>
-            <small>Corporate, transactions, M&amp;A, venture capital &amp; outside general counsel</small>
-          </span>
-        </button>
-        <button class="attorney-option" type="button" id="alessandra" aria-pressed="false" aria-controls="calendly-embed"
-                data-calendly="https://calendly.com/alessandramessing">
-          <img src="/s/alessandra-carcaterra-messing.webp" alt="" width="600" height="750">
-          <span class="attorney-option-text">
-            <strong>Alessandra Carcaterra Messing</strong>
-            <small>Litigation, intellectual property, patent &amp; IP disputes</small>
-          </span>
-        </button>
-      </div>
-      <p class="schedule-hint">Not sure who to choose? Book with either attorney. We will make sure you reach the right person.</p>
-      <div class="calendly-wrap">
-        <div class="calendly-embed" id="calendly-embed" aria-live="polite">
-          <div class="calendly-fallback">
-            <p>Book online with <a href="https://calendly.com/messinglaw" target="_blank" rel="noopener">Aaron I. Messing</a> or <a href="https://calendly.com/alessandramessing" target="_blank" rel="noopener">Alessandra Carcaterra Messing</a>.</p>
+        <div class="scheduler" data-scheduler>
+          <div class="attorney-picker" role="group" aria-label="Choose an attorney">
+            <button
+              class="attorney-option"
+              type="button"
+              id="aaron"
+              aria-pressed="true"
+              aria-controls="calendly-embed"
+              data-calendly="https://calendly.com/messinglaw">
+              <img src="/s/aaron-messing.webp" alt="" width="600" height="750">
+              <span class="attorney-option-text">
+                <strong>Aaron I. Messing</strong>
+                <small>
+                  Corporate, transactions, M&amp;A, venture capital &amp; outside general counsel
+                </small>
+              </span>
+            </button>
+            <button
+              class="attorney-option"
+              type="button"
+              id="alessandra"
+              aria-pressed="false"
+              aria-controls="calendly-embed"
+              data-calendly="https://calendly.com/alessandramessing">
+              <img src="/s/alessandra-carcaterra-messing.webp" alt="" width="600" height="750">
+              <span class="attorney-option-text">
+                <strong>Alessandra Carcaterra Messing</strong>
+                <small>Litigation, intellectual property, patent &amp; IP disputes</small>
+              </span>
+            </button>
+          </div>
+          <p class="schedule-hint">
+            Not sure who to choose? Book with either attorney. We will make sure you reach the right
+            person.
+          </p>
+          <div class="calendly-wrap">
+            <div class="calendly-embed" id="calendly-embed" aria-live="polite">
+              <div class="calendly-fallback">
+                <p>
+                  Book online with <a href="https://calendly.com/messinglaw" target="_blank"
+                      rel="noopener">Aaron I. Messing</a> or <a
+                      href="https://calendly.com/alessandramessing" target="_blank"
+                      rel="noopener">Alessandra Carcaterra Messing</a>.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+        <p class="schedule-alt">
+          Prefer to call or email? <a href="tel:+16464509460">646-450-9460</a> &middot;
+          <a href="mailto:aaron@messing.law">aaron@messing.law</a> &middot;
+          <a href="mailto:alessandra@messing.law">alessandra@messing.law</a>
+        </p>
       </div>
-    </div>
-    <p class="schedule-alt">Prefer to call or email? <a href="tel:+16464509460">646-450-9460</a> &middot; <a href="mailto:aaron@messing.law">aaron@messing.law</a> &middot; <a href="mailto:alessandra@messing.law">alessandra@messing.law</a></p>
-  </div>
-</section>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </section>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </div>
