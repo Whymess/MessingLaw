@@ -1,0 +1,21 @@
+Upload these files from images/ so they are reachable at /s/<filename>
+
+aaron-messing.webp
+ale-maldonado.webp
+alessandra-carcaterra-messing.webp
+arlana-carcaterra.webp
+band-forest-skyline.webp
+band-waterfall-city.webp
+banner-contact.webp
+banner-practice.webp
+banner-schedule.webp
+banner-team.webp
+chambers-2026.webp
+chambers-ip.webp
+chambers-ranked-2025.webp
+chambers-transactional.webp
+hero-home.webp
+lloyd-kim.webp
+logo-icon-green.webp
+logo-icon-white.webp
+rick-colosimo.webp
